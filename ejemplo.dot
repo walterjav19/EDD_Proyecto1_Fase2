@@ -1,0 +1,18 @@
+digraph ArbolAvl{bgcolor = "#A3F0CF" 
+ Nodoid03a088f1f920c  [shape=circle label = "4
+Damian 
+ alt:3 "style =filled]  Nodoid20d64538d8bcb  [shape=circle label = "2
+Javier 
+ alt:1 "style =filled]  Nodoid1fbc4479953  [shape=circle label = "1
+WALTER 
+ alt:0 "style =filled]  Nodoid20d64538d8bcb -> Nodoid1fbc4479953 Nodoid902160fc5849f  [shape=circle label = "3
+Damian 
+ alt:0 "style =filled]  Nodoid20d64538d8bcb -> Nodoid902160fc5849f Nodoid03a088f1f920c -> Nodoid20d64538d8bcb Nodoidd5373f0c18598  [shape=circle label = "6
+Damian 
+ alt:2 "style =filled]  Nodoida74a19fbf51c3  [shape=circle label = "5
+Damian 
+ alt:0 "style =filled]  Nodoidd5373f0c18598 -> Nodoida74a19fbf51c3 Nodoid95be3109a6d1c  [shape=circle label = "7
+Damian 
+ alt:1 "style =filled]  Nodoid89b8c69dd4c69  [shape=circle label = "8
+Damian 
+ alt:0 "style =filled]  Nodoid95be3109a6d1c -> Nodoid89b8c69dd4c69 Nodoidd5373f0c18598 -> Nodoid95be3109a6d1c Nodoid03a088f1f920c -> Nodoidd5373f0c18598 label="Alumnos registrados"}
