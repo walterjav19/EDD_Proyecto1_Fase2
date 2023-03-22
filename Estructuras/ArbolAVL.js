@@ -118,13 +118,13 @@ export class ArbolAVL {
   }
 
   generarDot() {
-      return 'digraph ArbolAvl{bgcolor = "#A3F0CF" \n' + this.recorrerNodo(this.arbol, this.obtenerId()) + ' label="Alumnos registrados"}';
+      return 'digraph ArbolAvl{\n' + this.recorrerNodo(this.arbol, this.obtenerId()) + ' label=\"arbol de alumnos\" bgcolor=\"skyblue\"}';
   }
 
   recorrerNodo(nodo, name) {
       if (!nodo)
           return undefined;
-      let value = ' Nodo' + name + '  [shape=circle label = "'+nodo.valor.carnet+"\n"+ nodo.valor.nombre + ' \n alt:' + nodo.altura + ' \"style =filled] ';
+      let value = ' Nodo' + name + '  [shape=Mrecord label = \"{{'+nodo.valor.carnet+"}|{"+ nodo.valor.nombre + ' |alt:' + nodo.altura + '}} \" style=filled] ';
 
       let nombreIzq = this.obtenerId();
       let dotIzquierda = this.recorrerNodo(nodo.izquierda, nombreIzq);
@@ -152,7 +152,7 @@ export class ArbolAVL {
               data += this.recorridoInOrden(nodo.izquierda);
           }
 
-          data += ' ' + nodo.valor.nombre;
+          data += ' ' + nodo.valor.carnet;
 
           if (nodo.derecha) {
               data += this.recorridoInOrden(nodo.derecha);
@@ -160,7 +160,39 @@ export class ArbolAVL {
       }
       return data;
   }
+
+  recorridoPreOrden(nodo) {
+    let data = '';
+    if (nodo) {
+        data += ' ' + nodo.valor.carnet;
+        if (nodo.izquierda) {
+            data += this.recorridoPreOrden(nodo.izquierda);
+        }
+        if (nodo.derecha) {
+            data += this.recorridoPreOrden(nodo.derecha);
+        }
+    }
+    return data;
 }
+
+
+recorridoPosOrden(nodo) {
+    let data = '';
+    if (nodo) {
+        if (nodo.izquierda) {
+            data += this.recorridoPosOrden(nodo.izquierda);
+        }
+        if (nodo.derecha) {
+            data += this.recorridoPosOrden(nodo.derecha);
+        }
+        data += ' ' + nodo.valor.carnet;
+    }
+    return data;
+}
+
+}
+
+
 
 
 

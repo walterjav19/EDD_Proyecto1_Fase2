@@ -55,6 +55,44 @@
     </div>
   </nav>
 
+
+  <div class="containb">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Upload</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="jsonFile">
+          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+      </div>
+  </div>
+  <script type="module">
+    import {Arbol_Alumnos} from '../main.js'
+    import {Estudiante} from '../Roles/estudiante.js'
+    
+    document.getElementById("jsonFile").addEventListener("change", function () {
+        let file_to_read = document.getElementById("jsonFile").files[0];
+        let fileread = new FileReader();
+        fileread.onload = function (e) {
+            let content = e.target.result;
+            let intern = JSON.parse(content);
+            for (let alumno of intern.alumnos){
+              let e=new Estudiante(alumno.nombre,alumno.carnet,alumno.password,alumno.raiz);
+              Arbol_Alumnos.insertar(e);
+              console.log(Arbol_Alumnos);
+              console.log(Arbol_Alumnos.generarDot());
+            }
+        };
+        fileread.readAsText(file_to_read);
+    });
+
+    
+</script>
+  
+  
+  
+ 
 </body>
 
 </html>

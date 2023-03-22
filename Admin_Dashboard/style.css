@@ -1,0 +1,19 @@
+.cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    background-color: skyblue;
+}
+
+.containb{
+    
+    margin-top: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
