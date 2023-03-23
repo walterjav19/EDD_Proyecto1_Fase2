@@ -8,16 +8,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-    <script src="admin.js" type="module"></script>
   <link rel="stylesheet" type="text/css" href="">
 </head>
 
@@ -49,50 +39,18 @@
           <a class="nav-link disabled" href="./carga.html">Carga Masiva</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-danger my-2 my-sm-0" type="submit" onclick="logout()">Log out</button>
-      </form>
+      <a href="#" id="logout">Cerrar sesión</a>
+      <script src="logout.js"></script>
     </div>
   </nav>
 
 
   <div class="containb">
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Upload</span>
-        </div>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="jsonFile">
-          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-        </div>
+          <input type="file" id="jsonFile">
+
       </div>
   </div>
-  <script type="module">
-    import {Arbol_Alumnos} from '../main.js'
-    import {Estudiante} from '../Roles/estudiante.js'
-    
-    document.getElementById("jsonFile").addEventListener("change", function () {
-        let file_to_read = document.getElementById("jsonFile").files[0];
-        let fileread = new FileReader();
-        fileread.onload = function (e) {
-            let content = e.target.result;
-            let intern = JSON.parse(content);
-            for (let alumno of intern.alumnos){
-              let e=new Estudiante(alumno.nombre,alumno.carnet,alumno.password,alumno.raiz);
-              Arbol_Alumnos.insertar(e);
-              console.log(Arbol_Alumnos);
-              console.log(Arbol_Alumnos.generarDot());
-            }
-        };
-        fileread.readAsText(file_to_read);
-    });
-
-    
-</script>
-  
-  
-  
- 
+  <script src="carga.js" type="module"></script> 
 </body>
 
 </html>

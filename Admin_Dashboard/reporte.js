@@ -1,10 +1,9 @@
-import {Arbol_Alumnos} from '../main.js'
+//import {Arbol_Alumnos} from '../main.js'
 import {Estudiante} from '../Roles/estudiante.js'
+import { Arbol_Alumnos,inserta } from '../Admin_Dashboard/carga.js';
 
-
-
-
-
+inserta()
+console.log(Arbol_Alumnos)
 
 let reporte = Arbol_Alumnos.generarDot();
 
