@@ -1,7 +1,9 @@
 import {Estudiante} from '../Roles/estudiante.js'
 import { ArbolAVL } from '../Estructuras/ArbolAVL.js';
-  
-   /*document.getElementById("jsonFile").addEventListener("change", function () {
+
+
+
+   document.getElementById("jsonFile").addEventListener("change", function () {
         
         let file_to_read = document.getElementById("jsonFile").files[0];
         let fileread = new FileReader();
@@ -15,17 +17,12 @@ import { ArbolAVL } from '../Estructuras/ArbolAVL.js';
             console.log(intern.alumnos)
             console.log(Arbol_Alumnos);
             console.log(Arbol_Alumnos.generarDot());
-            
+            localStorage.setItem("Arbol_estudiantes",JSON.stringify(Arbol_Alumnos));
+            alert("Estudiantes Correctamente Cargados")
         };
         fileread.readAsText(file_to_read);
 
     }
-    );*/
+    );
 
-    export let Arbol_Alumnos=new ArbolAVL();
-    export function inserta(){
-        Arbol_Alumnos.insertar(new Estudiante("wALTER",202111718,"CESA","/"));
-        Arbol_Alumnos.insertar(new Estudiante("JAVIER",202018918,"CESA","/"))
-        Arbol_Alumnos.insertar(new Estudiante("DAMIAN",202251412,"CESA","/"))
-    }  
-    
+    let Arbol_Alumnos=new ArbolAVL();

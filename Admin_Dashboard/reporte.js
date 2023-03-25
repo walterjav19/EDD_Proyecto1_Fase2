@@ -1,9 +1,17 @@
-//import {Arbol_Alumnos} from '../main.js'
+import { ArbolAVL } from '../Estructuras/ArbolAVL.js'
 import {Estudiante} from '../Roles/estudiante.js'
-import { Arbol_Alumnos,inserta } from '../Admin_Dashboard/carga.js';
 
-inserta()
-console.log(Arbol_Alumnos)
+
+
+const miobjeto=JSON.parse(localStorage.getItem("Arbol_estudiantes"))
+
+const Arbol_Alumnos=new ArbolAVL();
+console.log(miobjeto.arbol)
+Arbol_Alumnos.arbol=miobjeto.arbol
+
+
+
+
 
 let reporte = Arbol_Alumnos.generarDot();
 
