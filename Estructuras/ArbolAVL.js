@@ -152,7 +152,7 @@ export class ArbolAVL {
               data += this.recorridoInOrden(nodo.izquierda);
           }
 
-          data += ' ' + nodo.valor.carnet;
+          data +=nodo.valor.carnet+","+nodo.valor.nombre;
 
           if (nodo.derecha) {
               data += this.recorridoInOrden(nodo.derecha);
@@ -189,6 +189,21 @@ recorridoPosOrden(nodo) {
     }
     return data;
 }
+
+
+buscar(valor) {
+    let nodoActual = this.arbol;
+    while (nodoActual) {
+      if (valor === nodoActual.valor) {
+        return nodoActual;
+      } else if (valor < nodoActual.valor) {
+        nodoActual = nodoActual.izquierda;
+      } else {
+        nodoActual = nodoActual.derecha;
+      }
+    }
+    return null;
+  }
 
 }
 

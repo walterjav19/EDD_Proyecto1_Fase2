@@ -1,5 +1,5 @@
 import { ArbolAVL } from '../Estructuras/ArbolAVL.js'
-import {Estudiante} from '../Roles/estudiante.js'
+
 
 
 
