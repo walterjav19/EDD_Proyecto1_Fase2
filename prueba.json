@@ -17,6 +17,12 @@
             "carnet": 99827348,
             "password": "asdfsadf",
             "Carpeta_Raiz": "/"
+        },
+        {
+            "nombre": "walter",
+            "carnet": 202111718,
+            "password": "hola123",
+            "Carpeta_Raiz": "/"
         }
     ]
 }

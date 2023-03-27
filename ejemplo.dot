@@ -1,2 +1,12 @@
-digraph ArbolAvl{
- Nodoidb662b72eb5f36  [shape=Mrecord label = "{{4}|{Josue |alt:3}} " style=filled]  Nodoid786466c72e18d  [shape=Mrecord label = "{{2}|{Javier |alt:1}} " style=filled]  Nodoidad71b2c6ee086  [shape=Mrecord label = "{{1}|{Walter |alt:0}} " style=filled]  Nodoid786466c72e18d -> Nodoidad71b2c6ee086 Nodoidca96a682ca7b  [shape=Mrecord label = "{{3}|{Damian |alt:0}} " style=filled]  Nodoid786466c72e18d -> Nodoidca96a682ca7b Nodoidb662b72eb5f36 -> Nodoid786466c72e18d Nodoid43adfbd9b7893  [shape=Mrecord label = "{{3453454}|{dummy2 |alt:2}} " style=filled]  Nodoid45a0f6e3fcef9  [shape=Mrecord label = "{{5}|{aldy |alt:0}} " style=filled]  Nodoid43adfbd9b7893 -> Nodoid45a0f6e3fcef9 Nodoid09588fb94b1d  [shape=Mrecord label = "{{123123123}|{dummy1 |alt:1}} " style=filled]  Nodoidafe19224a800c  [shape=Mrecord label = "{{99827348}|{dummy3 |alt:0}} " style=filled]  Nodoid09588fb94b1d -> Nodoidafe19224a800c Nodoid43adfbd9b7893 -> Nodoid09588fb94b1d Nodoidb662b72eb5f36 -> Nodoid43adfbd9b7893 label="arbol de alumnos" bgcolor="skyblue"}
+digraph LinkedList{
+  node[shape=record];
+  edge[tailclip=false,arrowtail=dot,dir=both];
+  rankdir=LR;p1[label="{<data> Accion: se creo carpeta\nDocumentos\nFecha:2022-09-87\nHora:11:20|<next>}"]
+p1:next:c -> p2:data;
+p2[label="{<data> Accion: se creo carpeta\nDocumentos\nFecha:2022-09-87\nHora:11:20|<next>}"]
+p2:next:c -> p3:data;
+p3[label="{<data> Accion: se creo carpeta\nDocumentos\nFecha:2022-09-87\nHora:11:20|<next>}"]
+{node[shape=point height=0] p0 p4 }
+p0:n -> p1[arrowtail=none]p0:s -> p4:s[dir=none]
+p3:next:c -> p4:n[arrowhead=none]
+}

@@ -191,19 +191,35 @@ recorridoPosOrden(nodo) {
 }
 
 
-buscar(valor) {
+buscarUser(carnet) {
     let nodoActual = this.arbol;
     while (nodoActual) {
-      if (valor === nodoActual.valor) {
-        return nodoActual;
-      } else if (valor < nodoActual.valor) {
+      if (carnet === nodoActual.valor.carnet) {
+        return nodoActual.valor;
+      } else if (carnet < nodoActual.valor.carnet) {
         nodoActual = nodoActual.izquierda;
       } else {
         nodoActual = nodoActual.derecha;
       }
     }
-    return null;
+    return null;// en caso de no encontrar
   }
+
+  
+buscarPassword(carnet,password) {
+    let nodoActual = this.arbol;
+    while (nodoActual) {
+      if (carnet === nodoActual.valor.carnet && password===nodoActual.valor.password) {
+        return nodoActual.valor;
+      } else if (carnet < nodoActual.valor.carnet) {
+        nodoActual = nodoActual.izquierda;
+      } else {
+        nodoActual = nodoActual.derecha;
+      }
+    }
+    return null;// en caso de no encontrar
+  }
+
 
 }
 

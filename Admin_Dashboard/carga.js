@@ -11,7 +11,7 @@ import { ArbolAVL } from '../Estructuras/ArbolAVL.js';
             let content = e.target.result;
             let intern = JSON.parse(content);
             for (let alumno of intern.alumnos){
-              let e=new Estudiante(alumno.nombre,alumno.carnet,alumno.password,alumno.raiz);
+              let e=new Estudiante(alumno.nombre,alumno.carnet,alumno.password,alumno.Carpeta_Raiz);
               Arbol_Alumnos.insertar(e);
             }
             console.log(intern.alumnos)
