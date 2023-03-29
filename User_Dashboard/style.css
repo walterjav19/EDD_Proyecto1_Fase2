@@ -9,3 +9,8 @@
   #logout:hover {
     background-color: #d00;
   }
+  .cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

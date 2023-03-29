@@ -7,13 +7,12 @@ class Node {
 
     setNext(node) {
         this.next = node;
-        node.prev = this;
       }
 
   }
   
 
-  export class CircularLinkedList {
+export class CircularLinkedList {
     constructor() {
       this.head = null;
       this.tail = null;
@@ -27,11 +26,9 @@ class Node {
       if (this.length === 0) {
         this.head = newNode;
         this.tail = newNode;
-        newNode.setNext(newNode); // Hacer la lista circular
       } else {
-        this.tail.setNext(newNode);
+        this.tail.next=newNode;
         this.tail = newNode;
-        newNode.setNext(this.head); // Hacer la lista circular
       }
   
       this.length++;
@@ -98,49 +95,41 @@ class Node {
       do {
         result += `${current.data}, `;
         current = current.next;
-      } while (current !== this.head);
+      } while (current !== null);
   
       return `[${result.slice(0, -2)}]`;
     }
 
 
     hacerdot() {
-        let cabecera="digraph LinkedList{\n  node[shape=record];\n  edge[tailclip=false,arrowtail=dot,dir=both];\n  rankdir=LR;"
+        let cabecera="digraph LinkedList{node[shape=record];edge[tailclip=false,arrowtail=dot,dir=both];rankdir=LR;"
 
         let current=this.head
-        let enlaces=`{node[shape=point height=0] p0 p${this.length+1} }\np0:n -> p1[arrowtail=none]p0:s -> p${this.length+1}:s[dir=none]\np${this.length}:next:c -> p${this.length+1}:n[arrowhead=none]`
+        let enlaces=`{node[shape=point height=0] p0 p${this.length+1} }p0:n -> p1[arrowtail=none]p0:s -> p${this.length+1}:s[dir=none]p${this.length}:next:c -> p${this.length+1}:n[arrowhead=none]`
         let nodos="";
         let i=1
 
         do{
-          if(i===Lista.length){
-            nodos+=`p${i}[label="{<data> ${current.data}|<next>}"]\n`
+          if(i===this.length){
+            nodos+=`p${i}[label=\"{<data> ${current.data}|<next>}\"]`
+           
           } else{ 
-            nodos+=`p${i}[label="{<data> ${current.data}|<next>}"]\np${i}:next:c -> p${i+1}:data;\n`;
+            nodos+=`p${i}[label=\"{<data> ${current.data}|<next>}\"]p${i}:next:c -> p${i+1}:data;`;
           }  
           current=current.next;
           i++;  
-        }while(current!==this.head)
+        }while(current!==null)
 
-        return cabecera+nodos+enlaces+"\n}"
+        return cabecera+nodos+enlaces+"}"
 
       }
       
 
 
   }
-  
 
-let  Lista =new CircularLinkedList()
+export let lista_logs=new CircularLinkedList()
 
-Lista.append("Accion: se creo carpeta\\nDocumentos\\nFecha:2022-09-87\\nHora:11:20")
-
-Lista.append("Accion: se creo carpeta\\nDocumentos\\nFecha:2022-09-87\\nHora:11:20")
-
-Lista.append("Accion: se creo carpeta\\nDocumentos\\nFecha:2022-09-87\\nHora:11:20")
-
-
-
-
-console.log(Lista.hacerdot())
-
+export function insertar(info){
+  lista_logs.append(info)
+}

@@ -1,5 +1,5 @@
 import { ArbolAVL } from './Estructuras/ArbolAVL.js'
-
+import {CircularLinkedList,lista_logs,insertar} from './Estructuras/lista_circular.js'
 
 
 window.validateForm =function() {
@@ -19,8 +19,36 @@ window.validateForm =function() {
             if(Arbol_Alumnos.buscarPassword(parseInt(username),password)==null){
                 alert("contraseña no coincide con el usuario")
             }else{
+                let lista=new CircularLinkedList()
                 let estudiante=Arbol_Alumnos.buscarPassword(parseInt(username),password)
-                console.log(estudiante)
+                let fecha=new Date();
+                let actual="Fecha: "+fecha.getDate()+"-"+(fecha.getMonth()+1)+"-"+fecha.getFullYear()
+                let hora="Hora: "+fecha.getHours()+":"+fecha.getMinutes();
+                let log="Accion: log \\n"+actual+"\\n"+hora;
+                
+                if(localStorage.getItem("bitacora"+username)===null){
+                    lista.append(log)
+                    localStorage.setItem("bitacora"+username,JSON.stringify(lista))
+                }else{
+                    const listaGlobal=JSON.parse(localStorage.getItem("bitacora"+username))
+                    let listanueva=new CircularLinkedList()
+                    let puntero=listaGlobal.head
+                    
+                    do{
+                       listanueva.append(puntero.data)
+                       puntero=puntero.next 
+                    }while(puntero!==null)
+
+                    listanueva.append(log)
+                    console.log(listanueva.hacerdot())
+
+                    
+                    localStorage.setItem("bitacora"+username,JSON.stringify(listanueva))
+                }
+                
+                
+                
+            
                 localStorage.setItem("estudiante",JSON.stringify(estudiante))
                 window.location.replace("./User_Dashboard/main_page.html")
             }

@@ -1,12 +1,5 @@
-digraph LinkedList{
-  node[shape=record];
-  edge[tailclip=false,arrowtail=dot,dir=both];
-  rankdir=LR;p1[label="{<data> Accion: se creo carpeta\nDocumentos\nFecha:2022-09-87\nHora:11:20|<next>}"]
-p1:next:c -> p2:data;
-p2[label="{<data> Accion: se creo carpeta\nDocumentos\nFecha:2022-09-87\nHora:11:20|<next>}"]
-p2:next:c -> p3:data;
-p3[label="{<data> Accion: se creo carpeta\nDocumentos\nFecha:2022-09-87\nHora:11:20|<next>}"]
-{node[shape=point height=0] p0 p4 }
-p0:n -> p1[arrowtail=none]p0:s -> p4:s[dir=none]
-p3:next:c -> p4:n[arrowhead=none]
+digraph{  node[shape=record];  edge[tailclip=false,arrowtail=dot,dir=both];rankdir=LR;p1[label="{<data> Accion: log \nFecha: 28-3-2023\nHora: 22:9|<next>}"]
+{node[shape=point height=0] p0 p2 }
+p0:n -> p1[arrowtail=none]p0:s -> p2:s[dir=none]
+p1:next:c -> p2:n[arrowhead=none]
 }
