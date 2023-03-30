@@ -1,5 +1,1 @@
-digraph{  node[shape=record];  edge[tailclip=false,arrowtail=dot,dir=both];rankdir=LR;p1[label="{<data> Accion: log \nFecha: 28-3-2023\nHora: 22:9|<next>}"]
-{node[shape=point height=0] p0 p2 }
-p0:n -> p1[arrowtail=none]p0:s -> p2:s[dir=none]
-p1:next:c -> p2:n[arrowhead=none]
-}
+digraph MatrizCapa{ node [shape=box];  Nodoidff9b0de5e244b [label ="/"]  Nodoidda249db1e4b18 [label ="vilma"]  Nodoidff9b0de5e244b -> Nodoidda249db1e4b18  Nodoid466b04c7a90cf [label ="dexter"]  Nodoidff9b0de5e244b -> Nodoid466b04c7a90cf  }

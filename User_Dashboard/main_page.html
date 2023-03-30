@@ -16,12 +16,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+   <script src="../Estructuras/ArbolN.js" type="module"></script>
     <script src="./principal.js" type="module"></script>
+    <script src="./CrearCarpeta.js" type="module"></script>
     <title>Main Page</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#" id="bann"></a>
+        <a class="navbar-brand" href="./main_page.html" id="bann"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -31,7 +33,7 @@
           <ul class="navbar-nav mr-auto">
             
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Carpetas</a>
+              <a class="nav-link disabled" href="./archivos_arbol.html">Carpetas</a>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="#">Permisos</a>
@@ -44,5 +46,40 @@
           <script src="../Admin_Dashboard/logout.js"></script>
         </div>
       </nav>
+   
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">/</span>
+  </div>
+  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+  <button type="button" class="btn btn-outline-info">🔎</button>
+</div>
+<div class="carpent">
+  <button type="button" class="btn btn-outline-success" id="btncrear">Crear Carpeta</button>
+  <button type="button" class="btn btn-outline-danger">Eliminar Carpeta</button>
+</div>
+
+<div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="miModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="miModalLabel">Ingrese la ruta de la nueva carpeta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="cerrar">X</button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" id="miCampo" placeholder="/ruta">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cerrar2">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="miBotonModal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 </body>
 </html>

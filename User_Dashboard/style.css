@@ -14,3 +14,10 @@
     justify-content: center;
     align-items: center;
 }
+
+.carpent{
+  position: absolute; /* Asegura que el elemento esté posicionado de forma absoluta */
+  top: 75%; /* Coloca el borde superior del elemento en el centro vertical */
+  left: 50%; /* Coloca el borde izquierdo del elemento en el centro horizontal */
+  transform: translate(-50%, 50%);
+}
