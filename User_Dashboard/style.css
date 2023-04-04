@@ -21,3 +21,26 @@
   left: 50%; /* Coloca el borde izquierdo del elemento en el centro horizontal */
   transform: translate(-50%, 50%);
 }
+
+
+.fa-folder {
+  font-size: 48px; /* Cambia el tamaño a 48 píxeles */
+}
+.folder-icon {
+  display: inline-block;
+  text-align: center;
+}
+
+.folder-icon .fa-folder {
+  font-size: 48px;
+  display: block;
+}
+
+.folder-name {
+  font-size: 16px;
+}
+
+i{
+  margin: 10px;
+  padding: 10px;
+}

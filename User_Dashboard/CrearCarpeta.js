@@ -46,6 +46,7 @@ document.getElementById("miBotonModal").onclick=function (){
     }
     
     
+    
     localStorage.setItem("arboln"+username,JSON.stringify(newArbol))
 
     
@@ -67,7 +68,10 @@ document.getElementById("btnSi").onclick=function (){
     }
 
     newArbol.eliminar(ruta)
-    
+
+
+
+
     let indice=urls.indexOf(ruta);
 
     urls.splice(indice, 1);
@@ -92,8 +96,52 @@ document.getElementById("btnSi").onclick=function (){
     listanueva.append(log)
     
     localStorage.setItem("bitacora"+username,JSON.stringify(listanueva))
-
-
     console.log(ruta)
     $("#exampleModal").modal("hide"); // Oculta la modal
+    document.getElementById("basic-url").value="";
+}
+
+document.getElementById("buscar").onclick=function (){
+    let texto=document.getElementById("basic-url").value
+    let ruta="/"+texto
+    let username=JSON.parse(localStorage.getItem("estudiante")).carnet
+    const urls=JSON.parse(localStorage.getItem("urls"+username))
+    const folderContainer = document.querySelector('#folder-container');
+    folderContainer.innerHTML = "";
+
+    let newArbol=new Arbol()
+
+    for(let url of urls){
+        newArbol.insertar(url)
+    }
+
+    if(ruta==="/"){
+        
+
+        for(let carpeta of newArbol.arbol.hijos){
+            const folder = document.createElement('span');
+            folder.classList.add('folder-icon');
+            folder.innerHTML = `
+              <i class="fa-solid fa-folder" style="color: #e5c810;"></i>
+              <span class="folder-name">${carpeta.nombre}</span>
+            `;
+            folderContainer.appendChild(folder);
+        }
+
+    }else{
+        const carpetas=newArbol.obtenerHijos(ruta)
+        for(let carpeta of carpetas){
+            const folder = document.createElement('span');
+            folder.classList.add('folder-icon');
+            folder.innerHTML = `
+              <i class="fa-solid fa-folder" style="color: #e5c810;"></i>
+              <span class="folder-name">${carpeta.nombre}</span>
+            `;
+            folderContainer.appendChild(folder);
+        }
+
+    }
+
+
+
 }

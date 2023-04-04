@@ -20,6 +20,8 @@
     <script src="./principal.js" type="module"></script>
     <script src="./CrearCarpeta.js" type="module"></script>
     <title>Main Page</title>
+    <script src="https://kit.fontawesome.com/f11354f123.js" crossorigin="anonymous"></script>
+</head>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -47,16 +49,31 @@
         </div>
       </nav>
    
+
+
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon3">/</span>
   </div>
   <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-  <button type="button" class="btn btn-outline-info">🔎</button>
+  <button type="button" id="buscar" class="btn btn-outline-info">🔎</button>
 </div>
+
+
+<!--es donde las carpetas se muestran visualmente-->
+<div class="cuadro" id="folder-container">
+
+</div>
+
+
+
+
+
+
 <div class="carpent">
   <button type="button" class="btn btn-outline-success" id="btncrear">Crear Carpeta</button>
   <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">Eliminar Carpeta</button>
+  <input id="img" type="file" accept="image/png, image/gif, image/jpeg" />
 </div>
 
 <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="miModalLabel" aria-hidden="true">

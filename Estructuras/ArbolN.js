@@ -48,6 +48,18 @@ export class Arbol {
         this.arbol = new Nodo('/');
     }
 
+    
+  obtenerHijos(rutaString) {
+    let ruta = rutaString.split('/');
+    ruta[0] = '/';
+    const nodo = this.buscarNodo(ruta);
+    if (nodo) {
+      return nodo.hijos;
+    } else {
+      return null;
+    }
+  }
+
     insertar(rutaString) {
         let ruta = rutaString.split('/');
         ruta[0] = '/';
