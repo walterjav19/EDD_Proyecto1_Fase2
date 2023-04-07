@@ -1,6 +1,7 @@
 import { ArbolAVL } from './Estructuras/ArbolAVL.js'
 import {CircularLinkedList} from './Estructuras/lista_circular.js'
 import { Arbol } from './Estructuras/ArbolN.js';
+import { AvlArchivos } from './Estructuras/arbolArchivos.js';
 
 window.validateForm =function() {
     var username = document.getElementById("username").value;
@@ -30,6 +31,11 @@ window.validateForm =function() {
                 if(localStorage.getItem("bitacora"+username)===null){
                     let urls=[]
                     lista.append(log)
+                    
+                    let arbol_archivos=new AvlArchivos();
+    
+
+                    localStorage.setItem("/"+username,JSON.stringify(arbol_archivos))
                     localStorage.setItem("bitacora"+username,JSON.stringify(lista))
                     localStorage.setItem("arboln"+username,JSON.stringify(arboln))
                     localStorage.setItem("urls"+username,JSON.stringify(urls))
@@ -52,7 +58,7 @@ window.validateForm =function() {
                 
                 
                 
-            
+                
                 localStorage.setItem("estudiante",JSON.stringify(estudiante))
                 window.location.replace("./User_Dashboard/main_page.html")
             }
