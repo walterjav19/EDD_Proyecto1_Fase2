@@ -18,10 +18,49 @@ document.getElementById("miBotonModal").onclick=function (){
     let username=JSON.parse(localStorage.getItem("estudiante")).carnet
     let newArbol=new Arbol()
     const urls=JSON.parse(localStorage.getItem("urls"+username))
-    urls.push(ruta)
-    localStorage.setItem("urls"+username,JSON.stringify(urls))
+
+    if(urls.includes( ruta )){//ya existe
+        console.log("carpeta existente")
+
+        let fecha=new Date();
+        let actual="Fecha: "+fecha.getDate()+"-"+(fecha.getMonth()+1)+"-"+fecha.getFullYear()
+        let hora="Hora: "+fecha.getHours()+":"+fecha.getMinutes();
+        let log="Accion: se creo carpeta \\n \\\""+ruta+"(copia)"+"\\\" \\n"+actual+"\\n"+hora;
+
+        const listaGlobal=JSON.parse(localStorage.getItem("bitacora"+username))
+        let listanueva=new CircularLinkedList()
+        let puntero=listaGlobal.head
+        
+        do{
+        listanueva.append(puntero.data)
+        puntero=puntero.next 
+        }while(puntero!==null)
+
+        listanueva.append(log)
+        
+        localStorage.setItem("bitacora"+username,JSON.stringify(listanueva))
 
 
+        
+
+        urls.push(ruta+"(copia)")
+        localStorage.setItem("urls"+username,JSON.stringify(urls))
+        
+
+        for(let url of urls){
+            newArbol.insertar(url)
+        }
+        
+        
+        let arbol_archivos=new AvlArchivos();
+        
+
+        localStorage.setItem(ruta,JSON.stringify(arbol_archivos))
+        
+        localStorage.setItem("arboln"+username,JSON.stringify(newArbol))
+
+    }else{
+    
     let fecha=new Date();
     let actual="Fecha: "+fecha.getDate()+"-"+(fecha.getMonth()+1)+"-"+fecha.getFullYear()
     let hora="Hora: "+fecha.getHours()+":"+fecha.getMinutes();
@@ -43,6 +82,10 @@ document.getElementById("miBotonModal").onclick=function (){
 
     
 
+    urls.push(ruta)
+    localStorage.setItem("urls"+username,JSON.stringify(urls))
+    
+
     for(let url of urls){
         newArbol.insertar(url)
     }
@@ -53,11 +96,8 @@ document.getElementById("miBotonModal").onclick=function (){
 
     localStorage.setItem(ruta,JSON.stringify(arbol_archivos))
     
-
-
-    
     localStorage.setItem("arboln"+username,JSON.stringify(newArbol))
-
+    }
     
     document.getElementById("miCampo").value="";
     $("#miModal").modal("hide"); // Oculta la modal
@@ -108,6 +148,10 @@ document.getElementById("btnSi").onclick=function (){
     console.log(ruta)
     $("#exampleModal").modal("hide"); // Oculta la modal
     document.getElementById("basic-url").value="";
+    let lista=[]
+    localStorage.setItem(ruta,new AvlArchivos())
+    localStorage.setItem("archivos"+ruta,lista)
+
 }
 
 
@@ -119,9 +163,21 @@ window.recorrer=function(node){
         }
         const folderContainer = document.querySelector('#folder-container');
         if(node.valor.tipo==="png" || node.valor.tipo==="gif" || node.valor.tipo==="jpg" || node.valor.tipo==="jpeg"){
-            console.log("imagen")
+            const folder = document.createElement('span');
+            folder.classList.add('folder-icon');
+            folder.innerHTML = `
+                <img src="${node.valor.base64}" alt="${node.valor.nombre}" class="imagenesicons">
+                <span class="text-name">${node.valor.nombre}</span>
+            `;
+            folderContainer.appendChild(folder);
         }else if(node.valor.tipo==="plain"){
-            console.log("txt")
+            const folder = document.createElement('span');
+                folder.classList.add('folder-icon');
+                folder.innerHTML = `
+                  <i class="fa-solid fa-file-lines" style="color: #1361e7;"></i>
+                  <span class="text-name">${node.valor.nombre}</span>
+                `;
+                folderContainer.appendChild(folder);
         }else{
             const folder = document.createElement('span');
             folder.classList.add('folder-icon');
@@ -157,7 +213,7 @@ document.getElementById("buscar").onclick=function (){
 
     if(ruta==="/"){
         
-
+        
         for(let carpeta of newArbol.arbol.hijos){
             const folder = document.createElement('span');
             folder.classList.add('folder-icon');
@@ -173,7 +229,10 @@ document.getElementById("buscar").onclick=function (){
         const misarchivos=JSON.parse(localStorage.getItem("/"+username))
         const misarchivos_lista=JSON.parse(localStorage.getItem("archivos/"+username))
 
-        for(let archivo of misarchivos_lista){
+        recorrer(misarchivos.arbol)
+        
+
+        /*for(let archivo of misarchivos_lista){
             if(archivo.tipo==="png" || archivo.tipo==="gif" || archivo.tipo==="jpg" || archivo.tipo==="jpeg"){
                 const folder = document.createElement('span');
                 folder.classList.add('folder-icon');
@@ -201,12 +260,16 @@ document.getElementById("buscar").onclick=function (){
             }
 
 
-        }
+        }*/ 
 
-        //recorrer(misarchivos.arbol)
+        
         
 
     }else{
+
+        
+
+
         const carpetas=newArbol.obtenerHijos(ruta)
         for(let carpeta of carpetas){
             const folder = document.createElement('span');
@@ -221,7 +284,9 @@ document.getElementById("buscar").onclick=function (){
         const misarchivos=JSON.parse(localStorage.getItem(ruta))
         const misarchivos_lista=JSON.parse(localStorage.getItem("archivos"+ruta))
 
-        for(let archivo of misarchivos_lista){
+        recorrer(misarchivos.arbol)
+
+        /*for(let archivo of misarchivos_lista){
             if(archivo.tipo==="png" || archivo.tipo==="gif" || archivo.tipo==="jpg" || archivo.tipo==="jpeg"){
                 const folder = document.createElement('span');
                 folder.classList.add('folder-icon');
@@ -249,11 +314,10 @@ document.getElementById("buscar").onclick=function (){
             }
 
 
-        }
+        }*/
 
-        //recorrer(misarchivos.arbol)
-
-
+        
+        
         
 
     }

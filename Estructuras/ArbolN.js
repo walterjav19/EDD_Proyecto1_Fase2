@@ -116,5 +116,12 @@ export class Arbol {
     getId() {
         return "id" + Math.random().toString(16).slice(2);
     }
+    
+    existe(rutaString) {
+        let ruta = rutaString.split('/');
+        ruta[0] = '/';
+        const nodo = this.buscarNodo(ruta);
+        return nodo !== null;
+      }
 }
 
