@@ -23,4 +23,4 @@ do{
 let reporte = lista.hacerdot();
 
 
-document.getElementById("image").src = 'https://quickchart.io/graphviz?graph='+reporte;
+document.getElementById("image").src = 'https://quickchart.io/graphviz?graph='+encodeURIComponent(reporte);

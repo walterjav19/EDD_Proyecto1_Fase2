@@ -55,7 +55,7 @@ document.getElementById("miBotonModal").onclick=function (){
         let arbol_archivos=new AvlArchivos();
         
 
-        localStorage.setItem(ruta,JSON.stringify(arbol_archivos))
+        localStorage.setItem(ruta+"(copia)",JSON.stringify(arbol_archivos))
         
         localStorage.setItem("arboln"+username,JSON.stringify(newArbol))
 
@@ -324,7 +324,14 @@ document.getElementById("buscar").onclick=function (){
 }
 
 
-
+window.existearchivo=function(misarchivos,nombre){
+    for(let archivo of misarchivos){
+        if (archivo.nombre===nombre){
+            return true
+        }
+    }
+    return false
+}
 
    document.getElementById("subirArchivo").addEventListener("change", function () {
   
@@ -348,9 +355,9 @@ document.getElementById("buscar").onclick=function (){
         let texto=document.getElementById("basic-url").value
         let arbol_archivos=new AvlArchivos();
         let ruta="/"+texto
-
+        let username=JSON.parse(localStorage.getItem("estudiante")).carnet
         if(ruta==="/"){
-            let username=JSON.parse(localStorage.getItem("estudiante")).carnet
+            
 
             const miarbol=JSON.parse(localStorage.getItem("/"+username))
 
@@ -364,11 +371,72 @@ document.getElementById("buscar").onclick=function (){
                 localStorage.setItem("archivos/"+username,JSON.stringify(lista_archivos))
 
                 localStorage.setItem("/"+username,JSON.stringify(arbol_archivos))
+
+                let fecha=new Date();
+                let actual="Fecha: "+fecha.getDate()+"-"+(fecha.getMonth()+1)+"-"+fecha.getFullYear()
+                let hora="Hora: "+fecha.getHours()+":"+fecha.getMinutes();
+                let log="Accion: se creo el archivo \\n \\\""+filename+"\\\" \\n"+actual+"\\n"+hora;
+                
+                const listaGlobal=JSON.parse(localStorage.getItem("bitacora"+username))
+                let listanueva=new CircularLinkedList()
+                let puntero=listaGlobal.head
+                
+                do{
+                listanueva.append(puntero.data)
+                puntero=puntero.next 
+                }while(puntero!==null)
+
+                listanueva.append(log)
+                
+                localStorage.setItem("bitacora"+username,JSON.stringify(listanueva))
+
             }else{
                 const misarchivos=JSON.parse(localStorage.getItem("archivos/"+username))
+
+                
+                if(existearchivo(misarchivos,filename)){
+                    for(let Archivo of misarchivos){
+                    arbol_archivos.insertar(Archivo)
+                }
+                
+
+                let texto=filename
+                texto=texto.split(".")
+                texto[0]=texto[0]+"(copia)"
+                texto=texto[0]+"."+texto[1]
+
+                let arch=new Archivo(texto,base64String,filetype);
+                arbol_archivos.insertar(arch);
+
+                misarchivos.push(arch)
+                localStorage.setItem("archivos/"+username,JSON.stringify(misarchivos))
+
+                localStorage.setItem("/"+username,JSON.stringify(arbol_archivos))
+
+                let fecha=new Date();
+                let actual="Fecha: "+fecha.getDate()+"-"+(fecha.getMonth()+1)+"-"+fecha.getFullYear()
+                let hora="Hora: "+fecha.getHours()+":"+fecha.getMinutes();
+                let log="Accion: se creo el archivo \\n \\\""+texto+"\\\" \\n"+actual+"\\n"+hora;
+
+                const listaGlobal=JSON.parse(localStorage.getItem("bitacora"+username))
+                let listanueva=new CircularLinkedList()
+                let puntero=listaGlobal.head
+                
+                do{
+                listanueva.append(puntero.data)
+                puntero=puntero.next 
+                }while(puntero!==null)
+
+                listanueva.append(log)
+                localStorage.setItem("bitacora"+username,JSON.stringify(listanueva))
+
+
+                }else{
+
                 for(let Archivo of misarchivos){
                     arbol_archivos.insertar(Archivo)
                 }
+                                
                 let arch=new Archivo(filename,base64String,filetype);
                 arbol_archivos.insertar(arch);
 
@@ -376,6 +444,28 @@ document.getElementById("buscar").onclick=function (){
                 localStorage.setItem("archivos/"+username,JSON.stringify(misarchivos))
 
                 localStorage.setItem("/"+username,JSON.stringify(arbol_archivos))
+
+
+                
+                let fecha=new Date();
+                let actual="Fecha: "+fecha.getDate()+"-"+(fecha.getMonth()+1)+"-"+fecha.getFullYear()
+                let hora="Hora: "+fecha.getHours()+":"+fecha.getMinutes();
+                let log="Accion: se creo el archivo \\n \\\""+filename+"\\\" \\n"+actual+"\\n"+hora;
+
+                const listaGlobal=JSON.parse(localStorage.getItem("bitacora"+username))
+                let listanueva=new CircularLinkedList()
+                let puntero=listaGlobal.head
+                
+                do{
+                listanueva.append(puntero.data)
+                puntero=puntero.next 
+                }while(puntero!==null)
+
+                listanueva.append(log)
+                localStorage.setItem("bitacora"+username,JSON.stringify(listanueva))
+
+                }
+
 
                 
                 
@@ -386,28 +476,112 @@ document.getElementById("buscar").onclick=function (){
 
         }else{
             const miarbol=JSON.parse(localStorage.getItem(ruta))
-            if(miarbol.arbol===undefined){
+            if(miarbol.arbol===undefined){//no hay archivos
                 let arch=new Archivo(filename,base64String,filetype);
                 arbol_archivos.insertar(arch);
                 let lista_archivos=[]
                 lista_archivos.push(arch)
                 localStorage.setItem("archivos"+ruta,JSON.stringify(lista_archivos))
                 localStorage.setItem(ruta,JSON.stringify(arbol_archivos))
+
+                let fecha=new Date();
+                let actual="Fecha: "+fecha.getDate()+"-"+(fecha.getMonth()+1)+"-"+fecha.getFullYear()
+                let hora="Hora: "+fecha.getHours()+":"+fecha.getMinutes();
+                let log="Accion: se creo el archivo \\n \\\""+filename+"\\\" \\n"+actual+"\\n"+hora;
+
+                const listaGlobal=JSON.parse(localStorage.getItem("bitacora"+username))
+                let listanueva=new CircularLinkedList()
+                let puntero=listaGlobal.head
+                
+                do{
+                listanueva.append(puntero.data)
+                puntero=puntero.next 
+                }while(puntero!==null)
+
+                listanueva.append(log)
+                localStorage.setItem("bitacora"+username,JSON.stringify(listanueva))
+
+
             }else{
                 const misarchivos=JSON.parse(localStorage.getItem("archivos"+ruta))
-                for(let Archivo of misarchivos){
-                    arbol_archivos.insertar(Archivo)
+
+
+                if(existearchivo(misarchivos,filename)){//repe
+                    for(let Archivo of misarchivos){
+                        arbol_archivos.insertar(Archivo)
+                    }
+                    
+                    let texto=filename
+                    texto=texto.split(".")
+                    texto[0]=texto[0]+"(copia)"
+                    texto=texto[0]+"."+texto[1]
+
+
+                    let arch=new Archivo(texto,base64String,filetype);
+                    arbol_archivos.insertar(arch);
+
+                    misarchivos.push(arch)
+                    localStorage.setItem("archivos"+ruta,JSON.stringify(misarchivos))
+                    localStorage.setItem(ruta,JSON.stringify(arbol_archivos))
+
+                    
+                    let fecha=new Date();
+                    let actual="Fecha: "+fecha.getDate()+"-"+(fecha.getMonth()+1)+"-"+fecha.getFullYear()
+                    let hora="Hora: "+fecha.getHours()+":"+fecha.getMinutes();
+                    let log="Accion: se creo el archivo \\n \\\""+texto+"\\\" \\n"+actual+"\\n"+hora;
+
+                    const listaGlobal=JSON.parse(localStorage.getItem("bitacora"+username))
+                    let listanueva=new CircularLinkedList()
+                    let puntero=listaGlobal.head
+                    
+                    do{
+                    listanueva.append(puntero.data)
+                    puntero=puntero.next 
+                    }while(puntero!==null)
+
+                    listanueva.append(log)
+                    localStorage.setItem("bitacora"+username,JSON.stringify(listanueva))
+
+
+
+                }else{//no existe
+                    for(let Archivo of misarchivos){
+                        arbol_archivos.insertar(Archivo)
+                    }
+    
+                    let arch=new Archivo(filename,base64String,filetype);
+                    arbol_archivos.insertar(arch);
+    
+                    
+                    misarchivos.push(arch)
+    
+                    localStorage.setItem("archivos"+ruta,JSON.stringify(misarchivos))
+    
+                    localStorage.setItem(ruta,JSON.stringify(arbol_archivos))
+
+
+
+                    let fecha=new Date();
+                    let actual="Fecha: "+fecha.getDate()+"-"+(fecha.getMonth()+1)+"-"+fecha.getFullYear()
+                    let hora="Hora: "+fecha.getHours()+":"+fecha.getMinutes();
+                    let log="Accion: se creo el archivo \\n \\\""+filename+"\\\" \\n"+actual+"\\n"+hora;
+
+                    const listaGlobal=JSON.parse(localStorage.getItem("bitacora"+username))
+                    let listanueva=new CircularLinkedList()
+                    let puntero=listaGlobal.head
+                    
+                    do{
+                    listanueva.append(puntero.data)
+                    puntero=puntero.next 
+                    }while(puntero!==null)
+
+                    listanueva.append(log)
+                    localStorage.setItem("bitacora"+username,JSON.stringify(listanueva))
+
+    
                 }
 
-                let arch=new Archivo(filename,base64String,filetype);
-                arbol_archivos.insertar(arch);
 
-                
-                misarchivos.push(arch)
-
-                localStorage.setItem("archivos"+ruta,JSON.stringify(misarchivos))
-
-                localStorage.setItem(ruta,JSON.stringify(arbol_archivos))
 
 
             }
