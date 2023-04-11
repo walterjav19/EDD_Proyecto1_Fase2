@@ -166,7 +166,7 @@ window.recorrer=function(node){
             const folder = document.createElement('span');
             folder.classList.add('folder-icon');
             folder.innerHTML = `
-                <img src="${node.valor.base64}" alt="${node.valor.nombre}" class="imagenesicons">
+                <img id="imagenes_obtener" src="${node.valor.base64}" alt="${node.valor.nombre}" class="imagenesicons">
                 <span class="text-name">${node.valor.nombre}</span>
             `;
             folderContainer.appendChild(folder);
@@ -174,16 +174,18 @@ window.recorrer=function(node){
             const folder = document.createElement('span');
                 folder.classList.add('folder-icon');
                 folder.innerHTML = `
-                  <i class="fa-solid fa-file-lines" style="color: #1361e7;"></i>
+                  <i id="iconos_obtener" class="fa-solid fa-file-lines copy-icon" style="color: #1361e7;"></i>
                   <span class="text-name">${node.valor.nombre}</span>
+                  <script src="./f_iconos.js" type="module"></script>
                 `;
                 folderContainer.appendChild(folder);
         }else{
             const folder = document.createElement('span');
             folder.classList.add('folder-icon');
             folder.innerHTML = `
-              <i class="fa-solid fa-file-pdf" style="color: #eb142a;"></i>
+              <i id="iconos_obtener" class="fa-solid fa-file-pdf copy-icon" style="color: #eb142a;"></i>
               <span class="pdf-name">${node.valor.nombre}</span>
+              <script src="./f_iconos.js" type="module"></script>
             `;
             folderContainer.appendChild(folder);
         }
@@ -198,6 +200,7 @@ window.recorrer=function(node){
 }
 
 document.getElementById("buscar").onclick=function (){
+    console.clear()
     let texto=document.getElementById("basic-url").value
     let ruta="/"+texto
     let username=JSON.parse(localStorage.getItem("estudiante")).carnet
