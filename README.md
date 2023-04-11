@@ -47,7 +47,7 @@ GitHub Pages es un servicio de alojamiento gratuito proporcionado por GitHub, qu
 
 ## Diagrama de Clases
 
-![App Screenshot](diagrama.jpeg)
+![App Screenshot](diagrama.jpg)
 
 # Manual de Usuario
 
