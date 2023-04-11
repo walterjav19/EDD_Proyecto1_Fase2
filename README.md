@@ -57,62 +57,62 @@ GitHub Pages es un servicio de alojamiento gratuito proporcionado por GitHub, qu
 
 nos logeamos con las credenciaales de administrador user:admin password:admin 
 
-![App Screenshot](login.png)
+![App Screenshot](login.PNG)
 
 ## admin dashboard
 
 en este apartado tenemos Carga Masiva, el reporte del arbol y la muestra de los usuarios inorden,posorden y preorden en una tabla
 
-![App Screenshot](admindash.png)
+![App Screenshot](admindash.PNG)
 
 ### Carga Masiva
 Tenemos que elegir un archivo json que servira como entrada de nusetra pagina web
 
-![App Screenshot](subida.png)
+![App Screenshot](subida.PNG)
 
 ### Reporte arbol AVL
 
 se genera un reporte en grahviz sobre la estructura de datos de arbol avl donde se almacenaron todos los usuarios
 
 
-![App Screenshot](arbol.png)
+![App Screenshot](arbol.PNG)
 
 ### Mostrar
 
 se despliega una tabla que muestra el carnet y el nombre de todos los estudiantes subidos al sistema en el orden correspondiente
 
 
-![App Screenshot](tabla.png)
+![App Screenshot](tabla.PNG)
 
 ## user dashboard
 
 tenemos el panel de usuario que cuenta con diversas funcionalidades entre ellas crear carpetas y archivos asi como su eliminacion 
 
-![App Screenshot](userda.png)
+![App Screenshot](userda.PNG)
 
 
 ## crear carpeta
 debemos ingresar la ruta donde queramos crear la carpeta 
 
-![App Screenshot](carpeta.png)
+![App Screenshot](carpeta.PNG)
 
 ## subir archivo
 permite subir 3 tipos de archivos pdf,txt e imagenes
 todos los archivos son guardados en base 64
 
 
-![App Screenshot](subir.png)
+![App Screenshot](subir.PNG)
 
 ## eliminar carpeta
 eliminamos la ruta actual en la que estamos borra tanto carpetas como archivos por lo que se muestra un aviso 
 
-![App Screenshot](eleiminar.png)
+![App Screenshot](eleiminar.PNG)
 
 ## buscar
 
 muestra todos los archivos y carpetas de la ruta actual las imagenes una pequeña pre-visualizacion y los demas archivos como iconos
 
-![App Screenshot](buscar.png)
+![App Screenshot](buscar.PNG)
 ## Autor
 
 - [@walterjav19](https://www.github.com/walterjav19)
