@@ -21,7 +21,7 @@ Para realizar un correcto uso de este software es necesario el uso de un navegad
 
 
 - Chrome
-![App Screenshot](https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.m.wikipedia.org%2Fwiki%2FArchivo%3AGoogle_Chrome_icon_%2528February_2022%2529.svg&psig=AOvVaw3EY6NPKbcvMvPtTuT0RXtA&ust=1683207958986000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKD5i7ek2f4CFQAAAAAdAAAAABAN)
+![App Screenshot](cromo.png)
 - Firefox
 ![App Screenshot](firefox.png)
 - Edge
